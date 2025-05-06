@@ -1,76 +1,77 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>MyBiz</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>MyBiz</name>
-    <description>MyBiz Microservices Project</description>
+	<groupId>com.example</groupId>
+	<artifactId>MyBiz</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>MyBiz</name>
+	<description>MyBiz Microservices Project</description>
 
-    <modules>
-        <module>Config-Server</module>
-        <module>API-Gateway</module>
-        <module>Eureka-Server</module>
-        <module>Common-Library</module>
-        <module>user</module>
-        <module>account</module>
-        <module>feature</module>
-        <module>billing</module>
-        <module>invoice</module>
-        <module>secure-msg</module>
-        <module>notification</module>
-        <module>payment</module>
-    </modules>
+	<modules>
+		<module>Config-Server</module>
+		<module>API-Gateway</module>
+		<module>Eureka-Server</module>
+		<module>Common-Library</module>
+		<module>User</module>
+		<module>Account</module>
+		<module>Feature</module>
+		<module>Billing</module>
+		<module>Invoice</module>
+		<module>Secure-msg</module>
+		<module>Notification</module>
+		<module>Payment</module>
+	</modules>
 
-    <properties>
-        <java.version>17</java.version>
-        <spring-boot.version>3.1.5</spring-boot.version>
-    </properties>
+	<properties>
+		<java.version>17</java.version>
+		<spring-boot.version>3.1.5</spring-boot.version>
+		<spring-cloud.version>2024.0.1</spring-cloud.version>
+	</properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- Common Dependencies that can be used by all child modules -->
+		</dependencies>
+	</dependencyManagement>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
-    <url>https://github.com/Harshardhan/MyBiz.git</url>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <id>harsha</id>
-            <name>Harsha Vardhan</name>
-            <email>harshavardhan.harish@gmail.com</email>
-        </developer>
-    </developers>
-    <scm>
-        <connection>scm:git:git://github.com/Harshardhan/MyBiz.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:Harshardhan/MyBiz.git</developerConnection>
-        <url>https://github.com/Harshardhan/MyBiz.git</url>
-    </scm>
+	<url>https://github.com/Harshardhan/MyBiz.git</url>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>harsha</id>
+			<name>Harsha Vardhan</name>
+			<email>harshavardhan.harish@gmail.com</email>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/Harshardhan/MyBiz.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:Harshardhan/MyBiz.git</developerConnection>
+		<url>https://github.com/Harshardhan/MyBiz.git</url>
+	</scm>
 </project>
