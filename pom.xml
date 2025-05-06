@@ -12,10 +12,10 @@
     <description>MyBiz Microservices Project</description>
 
     <modules>
-        <module>config-server</module>
-        <module>api-gateway</module>
-        <module>eureka-server</module>
-        <module>common-library</module>
+        <module>Config-Server</module>
+        <module>API-Gateway</module>
+        <module>Eureka-Server</module>
+        <module>Common-Library</module>
         <module>user</module>
         <module>account</module>
         <module>feature</module>
@@ -53,4 +53,24 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <url>https://github.com/Harshardhan/MyBiz.git</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>harsha</id>
+            <name>Harsha Vardhan</name>
+            <email>harshavardhan.harish@gmail.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/Harshardhan/MyBiz.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:Harshardhan/MyBiz.git</developerConnection>
+        <url>https://github.com/Harshardhan/MyBiz.git</url>
+    </scm>
 </project>
