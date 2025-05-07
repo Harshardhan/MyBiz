@@ -1,10 +1,8 @@
 package com.example.demo;
 
 import java.time.LocalDateTime;
-
 import java.util.List;
 import java.util.Optional;
-
 import com.example.demo.enums.AccountStatus;
 import com.example.demo.exceptions.AccountAlreadyExistsException;
 import com.example.demo.exceptions.AccountNotFoundException;
