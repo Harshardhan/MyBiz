@@ -106,11 +106,13 @@ public class AccountServiceImpl implements AccountService {
 	    }
 	    accountRepository.deleteById(id);
 	    logger.info("Successfully deleted account: {}", deletedAccount.get());
+	
 	}
 
 	public void deleteAccountFallback(Long id, Throwable t) {
 	    logger.error("Fallback triggered during deleteAccount for accountId: {} - {}", id, t.getMessage());
 	}
+	
 	@Override
 	public List<Account> findByStatus(AccountStatus accountStatus) throws InValidAccountException {
 		List<Account> statusList = accountRepository.findByStatus(accountStatus);
