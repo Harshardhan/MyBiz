@@ -21,7 +21,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findByPhoneNumber(String phoneNumber);
 
     // Find accounts by status
-    @Query("SELECT a FROM Account a WHERE a.status = :status")
+    @Query("SELECT a FROM Account a WHERE accountStatus = :accountStatus")
     List<Account> findByStatus(@Param("accountStatus") AccountStatus accountStatus);
 
     // Find an account by email
