@@ -55,6 +55,8 @@ public class Account {
 	private String customerName;
 
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+
 	private AccountStatus accountStatus;
 
 	@CreationTimestamp
@@ -63,15 +65,5 @@ public class Account {
     private LocalDateTime updatedAt;
 
 	
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
-    }
 
 }

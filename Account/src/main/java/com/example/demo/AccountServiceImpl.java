@@ -9,7 +9,11 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import com.example.demo.dto.OpenAIMessage;
+import com.example.demo.dto.OpenAIRequest;
+import com.example.demo.dto.OpenAIResponse;
 import com.example.demo.enums.AccountStatus;
 import com.example.demo.exceptions.AccountAlreadyExistsException;
 import com.example.demo.exceptions.AccountNotFoundException;
@@ -26,9 +30,13 @@ public class AccountServiceImpl implements AccountService {
 
 	private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 	private final AccountRepository accountRepository;
+	private final OpenAIClient openAIClient;
+	private final WebClient webClient;
 
-	public AccountServiceImpl(AccountRepository accountRepository) {
-		this.accountRepository = accountRepository;
+	public AccountServiceImpl(AccountRepository accountRepository, OpenAIClient openAIClient, WebClient webClient) {
+	    this.accountRepository = accountRepository;
+	    this.openAIClient = openAIClient;
+		this.webClient = webClient;
 	}
 
 	@Override
@@ -193,4 +201,27 @@ public class AccountServiceImpl implements AccountService {
 				.orElseThrow(() -> new AccountNotFoundException("Account not found for id: " + id));
 	}
 
+	@Override
+	public String getWelcomeMessage(String customerName) {
+	    try {
+	        String prompt = "Write a friendly welcome message for a new customer named " + customerName;
+
+	        OpenAIRequest request = new OpenAIRequest("gpt-3.5-turbo",
+	            List.of(new OpenAIMessage("user", prompt)));
+
+	        OpenAIResponse response = webClient.post()
+	            .uri("/chat/completions")
+	            .header("Authorization", "Bearer " + prompt)
+	            .bodyValue(request)
+	            .retrieve()
+	            .bodyToMono(OpenAIResponse.class)
+	            .block();
+
+	        return response.getChoices().get(0).getMessage().getContent();
+
+	    } catch (Exception e) {
+	        return "Failed to generate message: " + e.getMessage();
+	    }
+
+}
 }

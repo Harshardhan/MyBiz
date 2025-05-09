@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -33,8 +34,20 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    public AccountController(AccountService accountService) {
+    private final OpenAIService openAIService;
+    
+    public AccountController(AccountService accountService, OpenAIService openAIService) {
         this.accountService = accountService;
+		this.openAIService = openAIService;
+    }
+
+    
+    
+    @PostMapping("/generate")
+    public ResponseEntity<?> generate(@RequestBody Map<String, String> request) {
+        String prompt = request.get("prompt");
+        String response = openAIService.generateResponse(prompt);
+        return ResponseEntity.ok(Map.of("response", response));
     }
 
     @PostMapping
@@ -61,6 +74,13 @@ public class AccountController {
         logger.info("🗑️ Account deleted successfully with ID: {}", id);
         return ResponseEntity.noContent().build();
     }
+    
+    @GetMapping("/welcome/{customerName}")
+    public ResponseEntity<String> getWelcomeMessage(@PathVariable String customerName) {
+        String message = accountService.getWelcomeMessage(customerName);
+        return ResponseEntity.ok(message);
+    }
+
 
     @GetMapping("/status")
     public ResponseEntity<List<Account>> findByStatus(@RequestParam AccountStatus accountStatus) throws InValidAccountException {

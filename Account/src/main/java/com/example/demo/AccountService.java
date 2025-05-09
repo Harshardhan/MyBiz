@@ -89,4 +89,6 @@ public interface AccountService {
 	 * @throws AccountNotFoundException if not found.
 	 */
 	Account findAccountById(Long id) throws AccountNotFoundException;
+	
+	String getWelcomeMessage(String customerName);
 }
