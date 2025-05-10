@@ -11,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import jakarta.validation.constraints.NotNull;
@@ -55,5 +56,13 @@ public class Feature {
 
     @Version
     private Long version;
+    
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();  // Set createdAt when a new feature is created
+        updatedAt = createdAt;  // Set updatedAt the same as createdAt initially
+    }
+
+
 
 }

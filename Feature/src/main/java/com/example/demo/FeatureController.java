@@ -36,7 +36,7 @@ public class FeatureController {
 	public ResponseEntity<Feature> addFeature(@Valid @RequestBody Feature feature)
 			throws InValidFeatureException, FeatureAlreadyExistsException {
 		Feature addFeature = featureService.addFeature(feature);
-		logger.info("Feature added successfully -featureId: {}", addFeature.getId());
+		logger.info("Feature added successfully -featureId: {}", addFeature);
 		return new ResponseEntity<>(addFeature, HttpStatus.CREATED);
 	}
 
