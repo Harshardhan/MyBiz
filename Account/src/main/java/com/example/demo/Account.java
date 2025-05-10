@@ -56,7 +56,6 @@ public class Account {
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-
 	private AccountStatus accountStatus;
 
 	@CreationTimestamp
